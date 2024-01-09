@@ -11,9 +11,10 @@
 </head>
 
 <body>
+
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/">Laravel</a>
+            <a class="navbar-brand" href="/">Laravel C1</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -40,7 +41,7 @@
     </nav>
 
     <div class="container">
-        <h1>Halaman Tambah Mahasiswa</h1>
+        <h1>Halaman Edit Mahasiswa</h1>
 
         <div class="row">
             <div class="col-sm-12">
@@ -58,18 +59,19 @@
                     </div>
                 @endif
 
-                <form action="/mahasiswa" method="POST">
+                <form action="/mahasiswa/{{ $data->id }}" method="POST">
                     @csrf
+                    @method('PUT')
                     <div class="row">
                         <div class="col-sm-4">
                             <label for="">NPM</label>
                             <input type="number" name="npm" class="form-control" placeholder="Input NPM"
-                                value="{{ Session::get('npm') }}">
+                                value="{{ $data->npm }}">
                         </div>
                         <div class="col-sm-4">
                             <label for="">Nama Mahasiswa</label>
                             <input type="text" name="nama_mahasiswa" class="form-control"
-                                placeholder="Input Nama Mahasiswa" value="{{ Session::get('nama_mahasiswa') }}">
+                                placeholder="Input Nama Mahasiswa" value="{{ $data->nama_mahasiswa }}">
                         </div>
                         <div class="col-sm-4">
                             <label for="">Jenis Kelamin</label>
@@ -85,12 +87,12 @@
                                 <div class="col-sm-5">
                                     <label for="">Tanggal Lahir</label>
                                     <input type="date" name="tgl_lahir" class="form-control"
-                                        value="{{ Session::get('tgl_lahir') }}">
+                                        value="{{ $data->tgl_lahir }}">
                                 </div>
                                 <div class="col-sm-7">
                                     <label for="">Alamat</label>
                                     <input type="text" name="alamat" id="" class="form-control"
-                                        placeholder="Input alamat" value="{{ Session::get('alamat') }}">
+                                        placeholder="Input alamat" value="{{ $data->alamat }}">
                                 </div>
                             </div>
                         </div>

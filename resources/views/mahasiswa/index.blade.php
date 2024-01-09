@@ -74,6 +74,7 @@
                             <th>Jenis Kelamin</th>
                             <th>Tanggal Lahir</th>
                             <th>Alamat</th>
+                            <th colspan="2">Opsi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -85,10 +86,21 @@
                                 <td>{{ $m->jk }}</td>
                                 <td>{{ $m->tgl_lahir }}</td>
                                 <td>{{ $m->alamat }}</td>
+                                <td>
+                                    <a href="mahasiswa/{{ $m->id }}/edit" class="btn btn-warning btn-sm">Edit</a>
+                                </td>
+                                <td>
+                                    <form action="mahasiswa/{{ $m->id }}" method="POST"
+                                        onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
+                                    </form>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
+                {{ $mahasiswa->links() }}
             </div>
         </div>
 
